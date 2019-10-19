@@ -16,7 +16,7 @@ Web Exploit 的基礎知識，front-end 有三樣東西需要記住 html, css, j
 既然有input field，不打點東西試試太可惜了。發現是不需要password的，雖然有flag的框框，但就是不給你看，再檢查一下html 跟 js吧，沒發現可疑的地方，flag似乎是在server side。由於沒有input field，那就先檢查一下cookie，就發現cookie有一項叫"admin"的field，用cookie editor把Fasle改成True，F5就拿到flag了。
 
 ---
-#####小知識
+####小知識
 ascii code為1byte大小，然而最後1bit為checksum，故此只有7bits的大小
 65(0x41) -> A 
 97(0x61) -> a
