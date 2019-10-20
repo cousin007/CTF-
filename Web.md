@@ -1,6 +1,6 @@
-## Day 1 - PicoCTF2019
+## Web Exploration PicoCTF2019
 
-### Web Exploration
+### Day 1
 
 1. Insp3ct0r
 
@@ -15,8 +15,18 @@ Web Exploit 的基礎知識，front-end 有三樣東西需要記住 html, css, j
 
 既然有input field，不打點東西試試太可惜了。發現是不需要password的，雖然有flag的框框，但就是不給你看，再檢查一下html 跟 js吧，沒發現可疑的地方，flag似乎是在server side。由於沒有input field，那就先檢查一下cookie，就發現cookie有一項叫"admin"的field，用cookie editor把Fasle改成True，F5就拿到flag了。
 
+### Day 2
+
+4. where are the robots
+
+現在的網站上通常會有一個txt檔叫robots.txt，主要是給爬蟲看，說某某網址不想被crawler訪問。
+
+5. Client-side-again
+
+遇到了比較複雜的題目，與第2題相似，不過js script被obfuscate了，掉上beautify js的網站，還是很難看。其實是自己對js的寫法不熟悉所以敏感度不足，不然應該是挺容易的。看到function就直接run一下，發現array的字串是調亂過的，寫一個loop把他們都print出來吧。把新的字串順序套進verify()裡就能得到flag了。
+
 ---
-###小知識
+###### 小知識
 ascii code為1byte大小，然而最後1bit為checksum，故此只有7bits的大小
 65(0x41) -> A 
 97(0x61) -> a
