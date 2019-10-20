@@ -27,6 +27,13 @@ Web Exploit 的基礎知識，front-end 有三樣東西需要記住 html, css, j
 
 ---
 ###### 小知識
+```
 ascii code為1byte大小，然而最後1bit為checksum，故此只有7bits的大小
 65(0x41) -> A 
 97(0x61) -> a
+```
+```
+javascript 的dot跟square bracket存在很奇妙的關係，在一句中同時有兩種notation的話，[]會被優先處理。
+eg. document["getElementById"]("pass")["value"]，其實是等同於
+    document.getElementById("pass").value
+```
