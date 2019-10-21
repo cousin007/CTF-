@@ -25,6 +25,22 @@ Web Exploit 的基礎知識，front-end 有三樣東西需要記住 html, css, j
 
 遇到了比較複雜的題目，與第2題相似，不過js script被obfuscate了，掉上beautify js的網站，還是很難看。其實是自己對js的寫法不熟悉所以敏感度不足，不然應該是挺容易的。看到function就直接run一下，發現array的字串是調亂過的，寫一個loop把他們都print出來吧。把新的字串順序套進verify()裡就能得到flag了。
 
+### Day 3
+
+6. Open-to-admins
+
+提示很清楚要求我們修改cookies了，隨便在browser安裝一個能修改cookies的add-on，把admin跟time加進去就可以了。
+
+7. picobrowser
+
+首先我們把flag按一按，出現的錯誤資訊是自身browser的信息。這裡我走了一下歪路，以為是js的問題，把appVersion修改了幾次還是不行。找狂之下意外看到了header那邊有一個field叫User-Agent儲存同樣的資訊，明白了問題原來是出在request header，同樣裝一下修改header的add-on，改成picobroswer就過關了。
+
+這邊證明了對web機制不熟悉的缺點，在看到flag是redirect的時候應該要想到問題是出在header身上，解完之後看了一下其他大大的write-up，如果是linux系統的話，直接打
+```
+curl -A 'picobrowser' https://....
+```
+簡單直接。
+
 ---
 ###### 小知識
 ```
