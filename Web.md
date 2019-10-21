@@ -41,6 +41,18 @@ curl -A 'picobrowser' https://....
 ```
 簡單直接。
 
+8. Irish-Name-Repo 1
+
+Sql injection 的熱身題，用經典 'or 1=1 解決
+
+9. Irish-Name-Repo 2
+
+上一題的進階版，把' or 1=1 打進去回覆是sqli detected，證明輸入是篩選過的，接下來就測試一下那個字元是不准過的。經過一輪測試，只有or是會被偵測，換言之，這次sqli就不能夠用or來完成。最直接的替換是and，用and來造句的話，那麼2個input都要是True才會回報正確，變相必需知道正確的username才可以bypass密碼，那就來試試最常見的admin，組成下面這句:
+```
+admin' and 1 != 0 --
+```
+過關!
+
 ---
 ###### 小知識
 ```
