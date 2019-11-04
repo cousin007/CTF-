@@ -27,3 +27,8 @@ Signal flag，海事用信號旗。
 6. Mr-Worldwide
 
 不知道這題是有點誤導還是我太嫩，題目說"musician left us message"，查了很久以為是db還是Hz之類的東西。一怒之下找write-up發現這是經緯度...
+
+---
+```
+經緯度(longitude & latitude): 東經 +/- 西經、北緯 +/- 南緯
+```
