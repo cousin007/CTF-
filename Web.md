@@ -53,6 +53,25 @@ admin' and 1 != 0 --
 ```
 過關!
 
+### 16/11/19
+
+10. Empire1
+
+這條有相當難度，筆者是解不到的/逃。這條明顯是insert statement，思路就是如何把insert中插入select query。嘗試把不合法的sqli打進去只會顯示500，是沒有任何error message的blind sql injection。那我們只能靠自己了。筆者是走上歪路以為他會過濾'(sigle quote)，但其實是沒有的，而且應該要發現把2個''打進去，是可以成功insert。答案是用上concatanate的技巧，這邊只可以用|| (用+會出現奇怪的東西)。
+先用'脫離String，好讓我們執行sql，但我們還是在insert裡面，所以我們需要構建valid的sql statement，所以用||接上我們等下injection的result，後面也要接一下對稱的，因為需要把原本結尾的'處理掉，最後變成了這個樣子。
+```
+'|| 123 ||'
+```
+123那邊就是執行sql的地方，我們需要用括號包著要執行的語句，不過原因不明。
+```
+'|| (select secret from user) ||'
+```
+因為是blind sql injection，column跟table name都需要靠自己猜出來，不過這樣顯示的東西還不是我們需要的。這邊可能只是返回了一個result，我們可以用group_concat()把整個column串成string。
+```
+'|| (select group_concat(secret) from user) ||'
+```
+真是複雜...
+
 ---
 ###### 小知識
 ```
